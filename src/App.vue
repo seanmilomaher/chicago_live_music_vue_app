@@ -9,6 +9,8 @@
       |
       <router-link to="/logout">Logout</router-link>
       |
+      <router-link to="/venues">Venue Index</router-link>
+      |
     </div>
     <router-view />
   </div>
