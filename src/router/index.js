@@ -7,6 +7,8 @@ import Logout from "../views/Logout.vue";
 import VenuesIndex from "../views/VenuesIndex.vue";
 import VenuesShow from "../views/VenuesShow.vue";
 import VenuesEdit from "../views/VenuesEdit.vue";
+import BandsShow from "../views/BandsShow.vue";
+import BandsEdit from "../views/BandsEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +47,16 @@ const routes = [
     path: "/venues/:id/edit",
     name: "venues-edit",
     component: VenuesEdit,
+  },
+  {
+    path: "/bands/:id",
+    name: "bands-show",
+    component: BandsShow,
+  },
+  {
+    path: "/bands/:id/edit",
+    name: "bands-edit",
+    component: BandsEdit,
   },
 ];
 
