@@ -9,6 +9,7 @@ import VenuesShow from "../views/VenuesShow.vue";
 import VenuesEdit from "../views/VenuesEdit.vue";
 import BandsShow from "../views/BandsShow.vue";
 import BandsEdit from "../views/BandsEdit.vue";
+import EventsIndex from "../views/EventsIndex.vue";
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [
     path: "/bands/:id/edit",
     name: "bands-edit",
     component: BandsEdit,
+  },
+  {
+    path: "/events",
+    name: "events-index",
+    component: EventsIndex,
   },
 ];
 

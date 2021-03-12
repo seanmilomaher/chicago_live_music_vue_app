@@ -11,6 +11,8 @@
       |
       <router-link to="/venues">Venue Index</router-link>
       |
+      <router-link to="/events">Event Index</router-link>
+      |
     </div>
     <router-view />
   </div>
