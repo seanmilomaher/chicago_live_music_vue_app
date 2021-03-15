@@ -1,8 +1,6 @@
 import Vue from "vue";
-window.Vue = Vue;
 import App from "./App.vue";
 import router from "./router";
-Vue.router = router;
 import axios from "axios";
 
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";

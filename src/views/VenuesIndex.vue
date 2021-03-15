@@ -1,5 +1,6 @@
 <template>
   <div class="venues-index">
+    
     <div id="map"></div>
   </div>
 </template>
@@ -44,8 +45,6 @@ export default {
           .addTo(map);
       });
     });
-  },
-  mounted: function() {
   },
 };
 </script>
