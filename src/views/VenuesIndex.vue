@@ -42,7 +42,7 @@ export default {
       console.log(venue);
       new mapboxgl.Marker()
         .setLngLat([venue.longitude, venue.latitude])
-        // .setPopup(new mapboxgl.Popup().setHTML("A place in Chicago"))
+        .setPopup(new mapboxgl.Popup().setHTML("A place in Chicago"))
         .addTo(map);
     });
   },

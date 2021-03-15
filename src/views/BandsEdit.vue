@@ -2,6 +2,11 @@
   <div class="bands-edit">
     <form v-on:submit.prevent="updateBand()">
       <h1>Edit Band</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">
+          {{ error }}
+        </li>
+      </ul>
       <div class="form-group">
         <label>Name:</label>
         <input type="text" class="form-control" v-model="band.name" />

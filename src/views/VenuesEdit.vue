@@ -2,6 +2,11 @@
   <div class="venues-edit">
     <form v-on:submit.prevent="updateVenue()">
       <h1>Edit Venue</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">
+          {{ error }}
+        </li>
+      </ul>
       <div class="form-group">
         <label>Name:</label>
         <input type="text" class="form-control" v-model="venue.name" />
