@@ -9,6 +9,7 @@ import VenuesShow from "../views/VenuesShow.vue";
 import VenuesEdit from "../views/VenuesEdit.vue";
 import BandsShow from "../views/BandsShow.vue";
 import BandsEdit from "../views/BandsEdit.vue";
+import BandsNew from "../views/BandsNew.vue";
 import EventsIndex from "../views/EventsIndex.vue";
 import EventsShow from "../views/EventsShow.vue";
 
@@ -49,6 +50,11 @@ const routes = [
     path: "/venues/:id/edit",
     name: "venues-edit",
     component: VenuesEdit,
+  },
+  {
+    path: "/bands/new",
+    name: "bands-new",
+    component: BandsNew,
   },
   {
     path: "/bands/:id",
