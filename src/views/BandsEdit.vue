@@ -17,11 +17,11 @@
       </div>
       <div class="form-group">
         <label>From City:</label>
-        <input type="text" class="form-control" v-model="band.from_city" />
+        <input type="text" class="form-control" v-model="band.fromCity" />
       </div>
       <div class="form-group">
         <label>From State:</label>
-        <input type="text" class="form-control" v-model="band.from_state" />
+        <input type="text" class="form-control" v-model="band.fromState" />
       </div>
       <div class="form-group">
         <label>Bio:</label>
@@ -54,8 +54,8 @@ export default {
       var params = {
         name: this.band.name,
         image: this.band.image,
-        from_city: this.band.from_city,
-        from_state: this.band.from_state,
+        from_city: this.band.fromCity,
+        from_state: this.band.fromState,
         bio: this.band.bio,
       };
       axios
@@ -72,7 +72,7 @@ export default {
       if (confirm("Are you sure you want to delete this band?")) {
         axios.delete(`api/bands/${this.band.id}`).then(response => {
           console.log(response.data);
-          // this.$router.push("/venues");
+          this.$router.push("/venues");
         });
       }
     },

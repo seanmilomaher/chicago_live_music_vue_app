@@ -1,6 +1,5 @@
 <template>
   <div class="venues-index">
-    
     <div id="map"></div>
   </div>
 </template>
@@ -36,7 +35,7 @@ export default {
         zoom: 10.5, // starting zoom
       });
 
-      this.venues.forEach((venue) => {
+      this.venues.forEach(venue => {
         console.log(venue);
         var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`<a href="/venues/${venue.id}">${venue.name}</a>`);
         new mapboxgl.Marker()

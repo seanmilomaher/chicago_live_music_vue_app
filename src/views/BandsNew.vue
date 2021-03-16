@@ -17,11 +17,11 @@
       </div>
       <div class="form-group">
         <label>From City:</label>
-        <input type="text" class="form-control" v-model="from_city" />
+        <input type="text" class="form-control" v-model="fromCity" />
       </div>
       <div class="form-group">
         <label>From State:</label>
-        <input type="text" class="form-control" v-model="from_state" />
+        <input type="text" class="form-control" v-model="fromState" />
       </div>
       <div class="form-group">
         <label>Bio:</label>
@@ -40,8 +40,8 @@ export default {
     return {
       name: "",
       image: "",
-      from_city: "",
-      from_state: "",
+      fromCity: "",
+      fromState: "",
       bio: "",
       errors: [],
     };
@@ -51,8 +51,8 @@ export default {
       var params = {
         name: this.name,
         image: this.image,
-        from_city: this.from_city,
-        from_state: this.from_state,
+        from_city: this.fromCity,
+        from_state: this.fromState,
         bio: this.bio,
       };
       axios
