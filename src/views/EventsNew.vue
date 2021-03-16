@@ -40,12 +40,9 @@
         <h3>Add a Band</h3>
         <div>
           Pick a Band:
-          <input type="text" v-model="eventBandId" list="bands" />
-          ---->
-          <router-link :to="`/bands/new`"><button>Create New Band</button></router-link>
-          <datalist id="bands">
+          <select v-model="eventBandId">
             <option v-for="band in bands" :key="band.id" v-bind:value="band.id">{{ band.name }}</option>
-          </datalist>
+          </select>
         </div>
         <div class="form-group">
           <label>Start Time:</label>
@@ -65,6 +62,37 @@
       <div v-for="band in filterBy(bands, eventBandId)" :key="band.id"></div>
       <input type="submit" class="btn btn-primary" value="Create Event" />
     </form>
+    <div class="bands-new">
+      <form v-on:submit.prevent="createBand()">
+        <h1>New Band</h1>
+        <ul>
+          <li class="text-danger" v-for="error in bandErrors" v-bind:key="error">
+            {{ error }}
+          </li>
+        </ul>
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" class="form-control" v-model="bandName" />
+        </div>
+        <div class="form-group">
+          <label>Image:</label>
+          <input type="text" class="form-control" v-model="bandImage" />
+        </div>
+        <div class="form-group">
+          <label>From City:</label>
+          <input type="text" class="form-control" v-model="fromCity" />
+        </div>
+        <div class="form-group">
+          <label>From State:</label>
+          <input type="text" class="form-control" v-model="fromState" />
+        </div>
+        <div class="form-group">
+          <label>Bio:</label>
+          <input type="text" class="form-control" v-model="bio" />
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create Band" />
+      </form>
+    </div>
   </div>
 </template>
 
@@ -76,6 +104,13 @@ export default {
   mixins: [Vue2Filters.mixin],
   data: function() {
     return {
+      bandName: "",
+      bandImage: "",
+      fromCity: "",
+      fromState: "",
+      bio: "",
+      bandErrors: [],
+      band: {},
       name: "",
       image: "",
       date: "",
@@ -129,6 +164,24 @@ export default {
         order: this.order,
       });
       (this.eventBandId = ""), (this.bandStartTime = ""), (this.bandEndTime = ""), (this.order = "");
+    },
+    createBand: function() {
+      var params = {
+        name: this.bandName,
+        image: this.bandImage,
+        from_city: this.fromCity,
+        from_state: this.fromState,
+        bio: this.bio,
+      };
+      axios
+        .post("/api/bands", params)
+        .then(response => {
+          console.log(response.data);
+          this.$router.push(`/bands/${response.data.id}`);
+        })
+        .catch(error => {
+          this.bandErrors = error.response.data.errors;
+        });
     },
   },
 };
