@@ -60,8 +60,7 @@ export default {
         .post("/api/bands", params)
         .then(response => {
           console.log(response.data);
-          this.band = response.data;
-          this.$router.push(`/bands/${this.band.id}`);
+          this.$router.push(`/bands/${response.data.id}`);
         })
         .catch(error => {
           this.errors = error.response.data.errors;
