@@ -44,6 +44,7 @@ export default {
       fromState: "",
       bio: "",
       errors: [],
+      band: {},
     };
   },
   methods: {
@@ -59,6 +60,7 @@ export default {
         .post("/api/bands", params)
         .then(response => {
           console.log(response.data);
+          this.band = response.data;
           this.$router.push(`/bands/${this.band.id}`);
         })
         .catch(error => {
