@@ -41,6 +41,8 @@
         <div>
           Pick a Band:
           <input type="text" v-model="eventBandId" list="bands" />
+          ---->
+          <router-link :to="`/bands/new`"><button>Create New Band</button></router-link>
           <datalist id="bands">
             <option v-for="band in bands" :key="band.id" v-bind:value="band.id">{{ band.name }}</option>
           </datalist>
@@ -57,11 +59,7 @@
           <label>Order:</label>
           <input type="text" class="form-control" v-model="order" />
         </div>
-        <input type="submit" class="btn btn-primary" value="Add Band" />
-        <p>{{ eventBandId }}</p>
-        <p>{{ bandStartTime }}</p>
-        <p>{{ bandEndTime }}</p>
-        <p>{{ order }}</p>
+        <input type="submit" class="btn btn-primary" value="Add Band to Event" />
         <p>{{ eventBands }}</p>
       </form>
       <div v-for="band in filterBy(bands, eventBandId)" :key="band.id"></div>
