@@ -1,9 +1,15 @@
 <template>
   <div class="events-index">
     <h1>Events</h1>
-    <div v-for="event in events" :key="event.id">
-      <h3>{{ event.name }}</h3>
-      <img :src="event.image" alt="" />
+    <div>
+      Search:
+      <input type="text" v-model="filter" />
+    </div>
+    <div v-for="event in filterBy(events, filter)" :key="event.id">
+      <router-link :to="`/events/${event.id}`">
+        <h3>{{ event.name }}</h3>
+        <img :src="event.image" alt="" />
+      </router-link>
       <p>{{ event.venue }}</p>
       <p>{{ event.date }}</p>
       <p>{{ event.start_time }}</p>
@@ -16,11 +22,14 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       events: [],
+      filter: "",
     };
   },
   created: function() {
