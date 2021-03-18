@@ -5,9 +5,9 @@
     <router-link :to="`/venues/${event.venue_id}`">
       <p>{{ event.venue.name }}: {{ event.venue.address }}</p>
     </router-link>
-    <p>{{ event.date }}</p>
-    <p>{{ event.start_time }}</p>
-    <p>{{ event.end_time }}</p>
+    <p>{{ date(event.date) }}</p>
+    <p>{{ time(event.start_time) }}</p>
+    <p>{{ time(event.end_time) }}</p>
     <p>{{ event.cover }}</p>
     <p>{{ event.age_limit }}</p>
     <router-link :to="`${event.id}/edit`">
@@ -21,8 +21,8 @@
       </router-link>
       <p>{{ band.from_city }}</p>
       <p>{{ band.from_state }}</p>
-      <p>{{ band.start_time }}</p>
-      <p>{{ band.end_time }}</p>
+      <p>{{ time(band.start_time) }}</p>
+      <p>{{ time(band.end_time) }}</p>
       <p>{{ band.bio }}</p>
     </div>
   </div>
@@ -30,6 +30,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 
 export default {
   data: function() {
@@ -43,11 +44,15 @@ export default {
     axios.get(`/api/events/${this.$route.params.id}`).then(response => {
       console.log(response.data);
       this.event = response.data;
+      console.log(this.event.start_time);
     });
   },
   methods: {
-    editing: function() {
-      return true;
+    time: function(time) {
+      return moment(time).format("LT");
+    },
+    date: function(date) {
+      return moment(date).format("LL");
     },
   },
 };

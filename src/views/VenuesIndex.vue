@@ -13,13 +13,17 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 /* global mapboxgl */
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       venues: [],
+      venue: {},
+      filter: "",
     };
   },
   created: function() {
