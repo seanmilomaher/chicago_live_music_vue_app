@@ -14,9 +14,9 @@
         <h4>{{ event.name }}</h4>
         <img :src="event.image" alt="" />
       </router-link>
-      <p>{{ event.date }}</p>
-      <p>{{ event.start_time }}</p>
-      <p>{{ event.end_time }}</p>
+      <p>{{ date(event.date) }}</p>
+      <p>{{ time(event.start_time) }}</p>
+      <p>{{ time(event.end_time) }}</p>
       <p>{{ event.cover }}</p>
       <p>{{ event.age_limit }}</p>
     </div>
@@ -25,6 +25,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 
 export default {
   data: function() {
@@ -37,6 +38,14 @@ export default {
       console.log(response.data);
       this.band = response.data;
     });
+  },
+  methods: {
+    time: function(time) {
+      return moment(time).format("LT");
+    },
+    date: function(date) {
+      return moment(date).format("LL");
+    },
   },
 };
 </script>

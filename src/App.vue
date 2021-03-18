@@ -40,3 +40,18 @@
   color: #42b983;
 }
 </style>
+
+<script>
+import moment from "moment";
+
+export default {
+  mthods: {
+    time: function(time) {
+      return moment(time).format("LT");
+    },
+    date: function(date) {
+      return moment(date).format("LL");
+    },
+  },
+};
+</script>
