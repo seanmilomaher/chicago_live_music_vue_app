@@ -12,6 +12,7 @@ import BandsEdit from "../views/BandsEdit.vue";
 import EventsNew from "../views/EventsNew.vue";
 import EventsIndex from "../views/EventsIndex.vue";
 import EventsShow from "../views/EventsShow.vue";
+import EventsEdit from "../views/EventsEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -74,6 +75,11 @@ const routes = [
     path: "/events/:id",
     name: "events-show",
     component: EventsShow,
+  },
+  {
+    path: "/events/:id/edit",
+    name: "events-edit",
+    component: EventsEdit,
   },
 ];
 

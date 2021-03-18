@@ -45,5 +45,10 @@ export default {
       this.event = response.data;
     });
   },
+  methods: {
+    editing: function() {
+      return true;
+    },
+  },
 };
 </script>
