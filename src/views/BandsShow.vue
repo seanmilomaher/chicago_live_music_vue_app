@@ -5,9 +5,11 @@
     <p>{{ band.from_city }}</p>
     <p>{{ band.from_state }}</p>
     <p>{{ band.bio }}</p>
-    <router-link :to="`${band.id}/edit`">
-      <button>Edit</button>
-    </router-link>
+    <div v-if="loggedIn()">
+      <router-link :to="`${band.id}/edit`">
+        <button>Edit</button>
+      </router-link>
+    </div>
     <h3>Upcoming Events</h3>
     <div v-for="event in band.events" :key="event.id">
       <router-link :to="`/events/${event.id}`">
@@ -45,6 +47,9 @@ export default {
     },
     date: function(date) {
       return moment(date).format("LL");
+    },
+    loggedIn: function() {
+      return localStorage.jwt ? true : false;
     },
   },
 };

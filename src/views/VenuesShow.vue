@@ -3,9 +3,14 @@
     <h1>{{ venue.name }}</h1>
     <img :src="venue.image" alt="" />
     <p>{{ venue.address }}</p>
-    <router-link :to="`${venue.id}/edit`">
-      <button>Edit</button>
-    </router-link>
+    <div v-if="isCurrentVenue()">
+      <router-link :to="`${venue.id}/edit`">
+        <button>Edit</button>
+      </router-link>
+      <router-link :to="`/events/new`">
+        <button>New Event</button>
+      </router-link>
+    </div>
     <h3>Upcoming Events</h3>
     <div v-for="event in venue.events" :key="event.id">
       <router-link :to="`/events/${event.id}`">
@@ -43,6 +48,11 @@ export default {
     },
     date: function(date) {
       return moment(date).format("LL");
+    },
+    isCurrentVenue: function() {
+      if (localStorage.venue_id == this.venue.id) {
+        return true;
+      }
     },
   },
 };

@@ -37,28 +37,30 @@
       </div>
       <br />
       <h3>Edit Bands</h3>
-      <form v-on:submit.prevent="createEventBand()">
-        <div>
-          Pick a Band:
-          <select v-model="eventBandId">
-            <option v-for="band in bands" :key="band.id" v-bind:value="band.id">{{ band.name }}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Start Time:</label>
-          <input type="text" class="form-control" v-model="bandStartTime" />
-        </div>
-        <div class="form-group">
-          <label>End Time:</label>
-          <input type="text" class="form-control" v-model="bandEndTime" />
-        </div>
-        <div class="form-group">
-          <label>Order:</label>
-          <input type="text" class="form-control" v-model="order" />
-        </div>
-        <input type="submit" class="btn btn-primary" value="Add Band to Event" />
-      </form>
-      <div v-for="band in filterBy(bands, eventBandId)" :key="band.id"></div>
+      <div v-for="band in event.bands" :key="band.name">
+        <form v-on:submit.prevent="createEventBand()">
+          <div>
+            Pick a Band:
+            <select v-model="eventBandId">
+              <option v-for="band in bands" :key="band.id" v-bind:value="band.id">{{ band.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Start Time:</label>
+            <input type="text" class="form-control" v-model="bandStartTime" />
+          </div>
+          <div class="form-group">
+            <label>End Time:</label>
+            <input type="text" class="form-control" v-model="bandEndTime" />
+          </div>
+          <div class="form-group">
+            <label>Order:</label>
+            <input type="text" class="form-control" v-model="order" />
+          </div>
+          <input type="submit" class="btn btn-primary" value="Add Band to Event" />
+        </form>
+      </div>
+      <!-- <div v-for="band in filterBy(bands, eventBandId)" :key="band.id"></div> -->
       <input type="submit" class="btn btn-primary" value="Update" />
       <button v-on:click="destroyEvent()">Delete</button>
     </form>

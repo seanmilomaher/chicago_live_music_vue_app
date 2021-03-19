@@ -10,9 +10,11 @@
     <p>{{ time(event.end_time) }}</p>
     <p>{{ event.cover }}</p>
     <p>{{ event.age_limit }}</p>
-    <router-link :to="`${event.id}/edit`">
-      <button>Edit</button>
-    </router-link>
+    <div v-if="isCurrentVenue()">
+      <router-link :to="`${event.id}/edit`">
+        <button>Edit</button>
+      </router-link>
+    </div>
     <h3>Bands</h3>
     <div v-for="band in event.bands" :key="band.id">
       <router-link :to="`/bands/${band.id}`">
@@ -53,6 +55,11 @@ export default {
     },
     date: function(date) {
       return moment(date).format("LL");
+    },
+    isCurrentVenue: function() {
+      if (localStorage.venue_id == this.event.venue_id) {
+        return true;
+      }
     },
   },
 };
