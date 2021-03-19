@@ -1,6 +1,10 @@
 <template>
   <div class="venues-index">
     <div id="map"></div>
+    Select Venue:
+    <select v-model="venueId" v-on:keyup.enter="routeToVenue()">
+      <option v-for="venue in venues" :key="venue.id" v-bind:value="venue.id">{{ venue.name }}</option>
+    </select>
   </div>
 </template>
 
@@ -23,7 +27,7 @@ export default {
     return {
       venues: [],
       venue: {},
-      filter: "",
+      venueId: "",
     };
   },
   created: function() {
@@ -49,6 +53,10 @@ export default {
       });
     });
   },
-  methods: {},
+  methods: {
+    routeToVenue: function() {
+      this.$router.push(`/venues/${this.venueId}`);
+    },
+  },
 };
 </script>
