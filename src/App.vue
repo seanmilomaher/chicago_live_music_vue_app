@@ -5,13 +5,11 @@
       |
       <router-link to="/events">Event Index</router-link>
       |
-      <!-- <router-link to="/">Home</router-link>
-      | -->
-      <router-link to="/signup">Signup</router-link>
+      <router-link v-if="!loggedIn()" to="/signup">Signup</router-link>
       |
-      <router-link to="/login">Login</router-link>
+      <router-link v-if="!loggedIn()" to="/login">Login</router-link>
       |
-      <router-link to="/logout">Logout</router-link>
+      <router-link v-if="loggedIn()" to="/logout">Logout</router-link>
       |
     </div>
     <router-view />
@@ -40,3 +38,13 @@
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    loggedIn: function() {
+      return localStorage.jwt ? true : false;
+    },
+  },
+};
+</script>
