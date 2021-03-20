@@ -46,11 +46,11 @@
         </div>
         <div class="form-group">
           <label>Start Time:</label>
-          <input type="text" class="form-control" v-model="bandStartTime" />
+          <input type="time" class="form-control" v-model="bandStartTime" />
         </div>
         <div class="form-group">
           <label>End Time:</label>
-          <input type="text" class="form-control" v-model="bandEndTime" />
+          <input type="time" class="form-control" v-model="bandEndTime" />
         </div>
         <div class="form-group">
           <label>Order:</label>

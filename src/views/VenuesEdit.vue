@@ -67,7 +67,10 @@ export default {
       if (confirm("Are you sure you want to delete this venue?")) {
         axios.delete(`api/venues/${this.venue.id}`).then(response => {
           console.log(response.data);
-          this.$router.push("/venues");
+          delete axios.defaults.headers.common["Authorization"];
+          localStorage.removeItem("jwt");
+          localStorage.removeItem("venue_id");
+          this.$router.push("/");
         });
       }
     },

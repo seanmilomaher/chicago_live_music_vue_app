@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     formattedTime: function(time) {
-      return moment(time).format("LT");
+      return moment(time, "LT").format("LT");
     },
     formattedDate: function(date) {
       return moment(date).format("LL");
