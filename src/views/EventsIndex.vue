@@ -11,9 +11,9 @@
         <img :src="event.image" alt="" />
       </router-link>
       <p>{{ event.venue }}</p>
-      <p>{{ date(event.date) }}</p>
-      <p>{{ time(event.start_time) }}</p>
-      <p>{{ time(event.end_time) }}</p>
+      <p>{{ formattedDate(event.date) }}</p>
+      <p>{{ formattedTime(event.start_time) }}</p>
+      <p>{{ formattedTime(event.end_time) }}</p>
       <p>{{ event.cover }}</p>
       <p>{{ event.age_limit }}</p>
     </div>
@@ -40,10 +40,10 @@ export default {
     });
   },
   methods: {
-    time: function(time) {
+    formattedTime: function(time) {
       return moment(time).format("LT");
     },
-    date: function(date) {
+    formattedDate: function(date) {
       return moment(date).format("LL");
     },
   },

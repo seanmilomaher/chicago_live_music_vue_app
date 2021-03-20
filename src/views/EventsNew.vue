@@ -17,15 +17,15 @@
       </div>
       <div class="form-group">
         <label>Date:</label>
-        <input type="text" class="form-control" v-model="date" />
+        <input type="date" class="form-control" v-model="date" />
       </div>
       <div class="form-group">
         <label>Start Time:</label>
-        <input type="text" class="form-control" v-model="startTime" />
+        <input type="time" class="form-control" v-model="startTime" />
       </div>
       <div class="form-group">
         <label>End Time:</label>
-        <input type="text" class="form-control" v-model="endTime" />
+        <input type="time" class="form-control" v-model="endTime" />
       </div>
       <div class="form-group">
         <label>Cover:</label>

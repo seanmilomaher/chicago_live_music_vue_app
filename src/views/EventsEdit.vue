@@ -37,30 +37,29 @@
       </div>
       <br />
       <h3>Edit Bands</h3>
-      <div v-for="band in event.bands" :key="band.name">
+      <div v-for="eventBand in eventBands" :key="eventBand.band_id">
         <form v-on:submit.prevent="createEventBand()">
           <div>
             Pick a Band:
-            <select v-model="eventBandId">
+            <select v-model="eventBand.band_id">
               <option v-for="band in bands" :key="band.id" v-bind:value="band.id">{{ band.name }}</option>
             </select>
           </div>
           <div class="form-group">
             <label>Start Time:</label>
-            <input type="text" class="form-control" v-model="bandStartTime" />
+            <input type="text" class="form-control" v-model="eventBand.start_time" />
           </div>
           <div class="form-group">
             <label>End Time:</label>
-            <input type="text" class="form-control" v-model="bandEndTime" />
+            <input type="text" class="form-control" v-model="eventBand.end_time" />
           </div>
           <div class="form-group">
             <label>Order:</label>
-            <input type="text" class="form-control" v-model="order" />
+            <input type="text" class="form-control" v-model="eventBand.order" />
           </div>
           <input type="submit" class="btn btn-primary" value="Add Band to Event" />
         </form>
       </div>
-      <!-- <div v-for="band in filterBy(bands, eventBandId)" :key="band.id"></div> -->
       <input type="submit" class="btn btn-primary" value="Update" />
       <button v-on:click="destroyEvent()">Delete</button>
     </form>
@@ -70,26 +69,29 @@
 
 <script>
 import axios from "axios";
-import Vue2Filters from "vue2-filters";
 
 export default {
-  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       event: {},
       bands: [],
       errors: [],
       eventBands: [],
-      eventBandId: "",
-      bandStartTime: "",
-      bandEndTime: "",
-      order: "",
     };
   },
   created: function() {
     axios.get(`/api/events/${this.$route.params.id}`).then(response => {
       console.log(response.data);
       this.event = response.data;
+      this.event.bands.forEach(band => {
+        var eventBand = {
+          band_id: band.id,
+          start_time: band.start_time,
+          end_time: band.end_time,
+          order: band.order,
+        };
+        this.eventBands.push(eventBand);
+      });
     });
     axios.get(`/api/bands`).then(response => {
       console.log(response.data);

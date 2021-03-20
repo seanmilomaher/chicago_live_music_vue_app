@@ -5,9 +5,9 @@
     <router-link :to="`/venues/${event.venue_id}`">
       <p>{{ event.venue.name }}: {{ event.venue.address }}</p>
     </router-link>
-    <p>{{ date(event.date) }}</p>
-    <p>{{ time(event.start_time) }}</p>
-    <p>{{ time(event.end_time) }}</p>
+    <p>{{ formattedDate(event.date) }}</p>
+    <p>{{ formattedTime(event.start_time) }}</p>
+    <p>{{ formattedTime(event.end_time) }}</p>
     <p>{{ event.cover }}</p>
     <p>{{ event.age_limit }}</p>
     <div v-if="isCurrentVenue()">
@@ -23,8 +23,8 @@
       </router-link>
       <p>{{ band.from_city }}</p>
       <p>{{ band.from_state }}</p>
-      <p>{{ time(band.start_time) }}</p>
-      <p>{{ time(band.end_time) }}</p>
+      <p>{{ formattedTime(band.start_time) }}</p>
+      <p>{{ formattedTime(band.end_time) }}</p>
       <p>{{ band.bio }}</p>
     </div>
   </div>
@@ -50,10 +50,10 @@ export default {
     });
   },
   methods: {
-    time: function(time) {
+    formattedTime: function(time) {
       return moment(time).format("LT");
     },
-    date: function(date) {
+    formattedDate: function(date) {
       return moment(date).format("LL");
     },
     isCurrentVenue: function() {
