@@ -1,22 +1,37 @@
 <template>
   <div class="login">
-    <form v-on:submit.prevent="submit()">
-      <h1>Login</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors" v-bind:key="error">
-          {{ error }}
-        </li>
-      </ul>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" class="form-control" v-model="email" />
+    <div class="paper-back-full">
+      <div class="login-form-full">
+        <div class="fix-box">
+          <div class="transparent-div no-padding animated fadeInUp animation-delay-8">
+            <ul class="nav nav-tabs nav-tabs-transparent">
+              <li class="active"><a href="#home" data-toggle="tab">Login</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active" id="home">
+                <form role="form" v-on:submit.prevent="submit()">
+                  <div class="form-group">
+                    <div class="input-group login-input">
+                      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                      <input type="text" class="form-control" v-model="email" />
+                    </div>
+                    <br />
+                    <div class="input-group login-input">
+                      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                      <input type="password" class="form-control" v-model="password" />
+                    </div>
+                    <button type="submit" class="btn btn-ar btn-primary pull-right">Login</button>
+                    <div class="clearfix"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" class="form-control" v-model="password" />
-      </div>
-      <input type="submit" class="btn btn-primary" value="Submit" />
-    </form>
+    </div>
   </div>
 </template>
 
