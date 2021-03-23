@@ -1,24 +1,62 @@
 <template>
   <div class="events-index">
-    <h1>Events</h1>
-    <div>
-      Search:
-      <input type="text" v-model="filter" />
+    <div class="container">
+      <div class="row">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." v-model="filter" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+          </span>
+        </div>
+        <!-- /input-group -->
+        <div class="col-xs-12">
+          <div v-for="event in filterBy(events, filter)" :key="event.id">
+            <article>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <h3 class="post-title">
+                    <router-link :to="`/events/${event.id}`" class="transicion">{{ event.name }}</router-link>
+                  </h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <router-link :to="`/events/${event.id}`">
+                        <img :src="event.image" alt="" />
+                      </router-link>
+                    </div>
+                    <div class="col-md-6">
+                      <router-link :to="`/venues/${event.venue.id}`">
+                        <p>Venue: {{ event.venue.name }}</p>
+                      </router-link>
+                      <p>Date: {{ formattedDate(event.date) }}</p>
+                      <p>Start Time: {{ formattedTime(event.start_time) }}</p>
+                      <p>End Time: {{ formattedTime(event.end_time) }}</p>
+                      <p>Cover: {{ event.cover }}</p>
+                      <p>Age Limit: {{ event.age_limit }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-footer"></div>
+              </div>
+            </article>
+          </div>
+          <!-- post -->
+        </div>
+        <!-- col-md-8 -->
+      </div>
+      <!-- row -->
     </div>
-    <div v-for="event in filterBy(events, filter)" :key="event.id">
-      <router-link :to="`/events/${event.id}`">
-        <h3>{{ event.name }}</h3>
-        <img :src="event.image" alt="" />
-      </router-link>
-      <p>{{ event.venue }}</p>
-      <p>{{ formattedDate(event.date) }}</p>
-      <p>{{ formattedTime(event.start_time) }}</p>
-      <p>{{ formattedTime(event.end_time) }}</p>
-      <p>{{ event.cover }}</p>
-      <p>{{ event.age_limit }}</p>
-    </div>
+    <!-- container  -->
   </div>
 </template>
+
+<style scoped>
+img {
+  float: left;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+</style>
 
 <script>
 import axios from "axios";
