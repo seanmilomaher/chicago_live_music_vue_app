@@ -15,9 +15,11 @@
               <table class="table table-striped">
                 <tr>
                   <th>Venue</th>
-                  <router-link :to="`/venues/${event.venue_id}`">
-                    <td>{{ event.venue.name }}</td>
-                  </router-link>
+                  <td>
+                    <router-link :to="`/venues/${event.venue.id}`">
+                      {{ event.venue_id }}
+                    </router-link>
+                  </td>
                 </tr>
                 <tr>
                   <th>Address</th>
@@ -28,11 +30,11 @@
                   <td>{{ formattedDate(event.date) }}</td>
                 </tr>
                 <tr>
-                  <th>Start Time</th>
+                  <th>Start</th>
                   <td>{{ formattedTime(event.start_time) }}</td>
                 </tr>
                 <tr>
-                  <th>End Time</th>
+                  <th>End</th>
                   <td>{{ formattedTime(event.end_time) }}</td>
                 </tr>
                 <tr>
@@ -45,40 +47,40 @@
                 </tr>
               </table>
             </div>
-            <div v-if="isCurrentVenue()">
-              <button
-                type="button"
-                class="btn btn-ar btn-warning btn-block"
-                data-toggle="modal"
-                data-target="#eventDetailsModal"
-              >
-                Edit Event Details
-              </button>
-              <br />
-              <button
-                type="button"
-                class="btn btn-ar btn-warning btn-block"
-                data-toggle="modal"
-                data-target="#eventBandsModal"
-              >
-                Edit Bands
-              </button>
-              <br />
-              <button type="button" class="btn btn-ar btn-danger btn-block" v-on:click.prevent="destroyEvent()">
-                Delete Event
-              </button>
-              <hr />
-              <h6>Can't find the band you're looking for?</h6>
-              <button
-                type="button"
-                class="btn btn-ar btn-success btn-block"
-                data-toggle="modal"
-                data-target="#newBandModal"
-              >
-                Create New Band
-              </button>
-            </div>
           </section>
+          <div v-if="isCurrentVenue()">
+            <button
+              type="button"
+              class="btn btn-ar btn-warning btn-block"
+              data-toggle="modal"
+              data-target="#eventDetailsModal"
+            >
+              Edit Event Details
+            </button>
+            <br />
+            <button
+              type="button"
+              class="btn btn-ar btn-warning btn-block"
+              data-toggle="modal"
+              data-target="#eventBandsModal"
+            >
+              Edit Bands
+            </button>
+            <br />
+            <button type="button" class="btn btn-ar btn-danger btn-block" v-on:click.prevent="destroyEvent()">
+              Delete Event
+            </button>
+            <hr />
+            <h6>Can't find the band you're looking for?</h6>
+            <button
+              type="button"
+              class="btn btn-ar btn-success btn-block"
+              data-toggle="modal"
+              data-target="#newBandModal"
+            >
+              Create New Band
+            </button>
+          </div>
         </div>
         <div class="col-md-8">
           <section>
@@ -241,7 +243,10 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-ar btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
             <button
-              v-on:click="createEventBand()"
+              v-on:click="
+                createEventBand();
+                updateEvent();
+              "
               class="btn btn-ar btn-primary"
               data-dismiss="modal"
               aria-hidden="true"

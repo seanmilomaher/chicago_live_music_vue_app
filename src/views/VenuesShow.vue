@@ -2,7 +2,7 @@
   <div class="venues-show">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 venue-info">
           <section>
             <h3>{{ venue.name }}</h3>
             <img :src="venue.image" alt="avatar" class="img-responsive imageborder" />
@@ -198,31 +198,21 @@
         </div>
       </div>
     </div>
-    <!-- <h1>{{ venue.name }}</h1>
-    <img :src="venue.image" alt="" />
-    <p>{{ venue.address }}</p>
-    <div v-if="isCurrentVenue()">
-      <router-link :to="`${venue.id}/edit`">
-        <button>Edit</button>
-      </router-link>
-      <router-link :to="`/events/new`">
-        <button>New Event</button>
-      </router-link>
-    </div>
-    <h3>Upcoming Events</h3>
-    <div v-for="event in venue.events" :key="event.id">
-      <router-link :to="`/events/${event.id}`">
-        <h4>{{ event.name }}</h4>
-        <img :src="event.image" alt="" />
-      </router-link>
-      <p>{{ formattedDate(event.date) }}</p>
-      <p>{{ formattedTime(event.start_time) }}</p>
-      <p>{{ formattedTime(event.end_time) }}</p>
-      <p>{{ event.cover }}</p>
-      <p>{{ event.age_limit }}</p>
-    </div> -->
   </div>
 </template>
+
+<style scoped>
+.venue-info img {
+  margin: auto;
+  display: block;
+}
+.venue-info h3 {
+  text-align: center;
+}
+.venue-info h5 {
+  text-align: center;
+}
+</style>
 
 <script>
 import axios from "axios";
