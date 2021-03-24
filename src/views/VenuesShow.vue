@@ -2,44 +2,35 @@
   <div class="venues-show">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
           <section>
             <h3>{{ venue.name }}</h3>
             <img :src="venue.image" alt="avatar" class="img-responsive imageborder" />
           </section>
           <section>
             <h5>{{ venue.address }}</h5>
-            <!-- <div class="panel panel-primary">
-              <div class="panel-heading">
-                Venue Details
-              </div>
-              <table class="table table-striped">
-                <tr>
-                  <th>Address</th>
-                  <td>
-                    {{ venue.address }}
-                  </td>
-                </tr>
-              </table>
-            </div> -->
             <div v-if="isCurrentVenue()">
               <button
                 type="button"
-                class="btn btn-ar btn-warning btn-block"
+                class="btn btn-ar btn-warning btn-lrg"
                 data-toggle="modal"
                 data-target="#venueDetailsModal"
               >
                 Edit Venue
               </button>
               <br />
-              <button type="button" class="btn btn-ar btn-danger btn-block" v-on:click.prevent="destroyVenue()">
+              <button type="button" class="btn btn-ar btn-danger btn-lrg" v-on:click.prevent="destroyVenue()">
                 Delete Venue
+              </button>
+              <br />
+              <button type="button" class="btn btn-ar btn-success btn-lrg" v-on:click="$router.push(`/events/new`)">
+                New Event
               </button>
               <hr />
               <h6>Can't find the band you're looking for?</h6>
               <button
                 type="button"
-                class="btn btn-ar btn-success btn-block"
+                class="btn btn-ar btn-success btn-lrg"
                 data-toggle="modal"
                 data-target="#newBandModal"
               >
@@ -48,9 +39,11 @@
             </div>
           </section>
         </div>
-        <div class="col-md-8">
+      </div>
+      <div class="row">
+        <div class="col-md-12">
           <section>
-            <h2 class="section-title">Events</h2>
+            <h2 class="section-title">Upcoming Events</h2>
             <div v-for="event in venue.events" :key="event.id" class="list-group">
               <div class="list-group-item">
                 <div class="row">
@@ -66,7 +59,23 @@
                     <table class="table table-striped">
                       <tr>
                         <th>Date</th>
-                        <td>{{ event.date }}</td>
+                        <td>{{ formattedDate(event.date) }}</td>
+                      </tr>
+                      <tr>
+                        <th>Start</th>
+                        <td>{{ formattedTime(event.start_time) }}</td>
+                      </tr>
+                      <tr>
+                        <th>End</th>
+                        <td>{{ formattedTime(event.end_time) }}</td>
+                      </tr>
+                      <tr>
+                        <th>Cover</th>
+                        <td>{{ event.cover }}</td>
+                      </tr>
+                      <tr>
+                        <th>Age Limit</th>
+                        <td>{{ event.age_limit }}</td>
                       </tr>
                     </table>
                   </div>
@@ -189,7 +198,7 @@
         </div>
       </div>
     </div>
-    <h1>{{ venue.name }}</h1>
+    <!-- <h1>{{ venue.name }}</h1>
     <img :src="venue.image" alt="" />
     <p>{{ venue.address }}</p>
     <div v-if="isCurrentVenue()">
@@ -211,7 +220,7 @@
       <p>{{ formattedTime(event.end_time) }}</p>
       <p>{{ event.cover }}</p>
       <p>{{ event.age_limit }}</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
