@@ -16,8 +16,8 @@
                 <tr>
                   <th>Venue</th>
                   <td>
-                    <router-link :to="`/venues/${event.venue.id}`">
-                      {{ event.venue_id }}
+                    <router-link :to="`/venues/${event.venue_id}`">
+                      {{ event.venue.name }}
                     </router-link>
                   </td>
                 </tr>
