@@ -1,17 +1,33 @@
 <template>
   <div class="venues-index">
-    <div id="map"></div>
-    Select Venue:
-    <select v-model="venueId" v-on:keyup.enter="routeToVenue()">
-      <option v-for="venue in venues" :key="venue.id" v-bind:value="venue.id">{{ venue.name }}</option>
-    </select>
+    <h1 class="section-title">
+      Venues
+    </h1>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div id="map"></div>
+        </div>
+        <div class="panel-footer">
+          <div>
+            Select Venue:
+            <select v-model="venueId" v-on:keyup.enter="routeToVenue()">
+              <option v-for="venue in venues" :key="venue.id" v-bind:value="venue.id">{{ venue.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style>
 #map {
   height: 500px;
-  width: 75%;
+  width: 100%;
+}
+h1 {
+  text-align: center;
 }
 </style>
 
