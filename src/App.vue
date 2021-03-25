@@ -83,8 +83,8 @@
     <!-- Footer Start -->
     <footer id="footer">
       <p>
-        &copy; 2014
-        <a href="#">Artificial Reason</a>
+        &copy; 2021
+        <a href="https://github.com/seanmilomaher" target="_blank" rel="noopener noreferrer">Jean de la nouille</a>
         , inc. All rights reserved.
       </p>
     </footer>
