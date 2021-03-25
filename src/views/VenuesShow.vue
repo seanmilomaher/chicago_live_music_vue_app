@@ -192,7 +192,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-ar btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
             <button v-on:click="createBand()" class="btn btn-ar btn-primary" data-dismiss="modal" aria-hidden="true">
-              Save Changes
+              Submit
             </button>
           </div>
         </div>
