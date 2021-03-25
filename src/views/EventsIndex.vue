@@ -10,6 +10,7 @@
         </div>
         <!-- /input-group -->
         <div class="col-xs-12">
+          <h2 class="section-title">Events</h2>
           <div v-for="event in filterBy(events, filter)" :key="event.id">
             <article>
               <div class="panel panel-default">
@@ -55,6 +56,9 @@ img {
   width: 400px;
   height: 400px;
   object-fit: cover;
+}
+h2 {
+  text-align: center;
 }
 </style>
 
