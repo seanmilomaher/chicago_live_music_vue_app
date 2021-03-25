@@ -6,13 +6,10 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import VenuesIndex from "../views/VenuesIndex.vue";
 import VenuesShow from "../views/VenuesShow.vue";
-import VenuesEdit from "../views/VenuesEdit.vue";
 import BandsShow from "../views/BandsShow.vue";
-import BandsEdit from "../views/BandsEdit.vue";
 import EventsNew from "../views/EventsNew.vue";
 import EventsIndex from "../views/EventsIndex.vue";
 import EventsShow from "../views/EventsShow.vue";
-import EventsEdit from "../views/EventsEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -47,19 +44,9 @@ const routes = [
     component: VenuesShow,
   },
   {
-    path: "/venues/:id/edit",
-    name: "venues-edit",
-    component: VenuesEdit,
-  },
-  {
     path: "/bands/:id",
     name: "bands-show",
     component: BandsShow,
-  },
-  {
-    path: "/bands/:id/edit",
-    name: "bands-edit",
-    component: BandsEdit,
   },
   {
     path: "/events/new",
@@ -75,11 +62,6 @@ const routes = [
     path: "/events/:id",
     name: "events-show",
     component: EventsShow,
-  },
-  {
-    path: "/events/:id/edit",
-    name: "events-edit",
-    component: EventsEdit,
   },
 ];
 
